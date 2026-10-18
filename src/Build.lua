@@ -1,7 +1,7 @@
 return function()
 	return {
 		Name = "Anime Expeditions",
-		Version = "1.30.2",
+		Version = "1.31.0",
 		PlaceId = 84515722934860,
 		Repository = "https://github.com/Byorl/Anime-Expedition",
 		RawBase = "https://jexvral.xyz/game/ap/",
@@ -9,6 +9,6 @@ return function()
 		MacLibUrl = "https://raw.githubusercontent.com/Byorl/Maclib/7a99c23bde4eee7d19b054462b17985d06a74ae5/src/maclib.lua",
 		DataRoot = "AnimeExpeditionsHubData",
 		GameCode = "ap",
-		ApiUrl = "https://api.jexvral.xyz",
+		ApiUrl = "https://jexvral.xyz",
 	}
 end

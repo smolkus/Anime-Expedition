@@ -12,6 +12,7 @@ return function(Import)
 	local GameAdapter = Import("GameAdapter")
 	local JoinCoordinator = Import("JoinCoordinator")
 	local CloudSyncModule = Import("CloudSync")
+	local UiSchema = Import("UiSchema")
 	local ResultsHub = Import("ResultsHub")
 	local WebhookReporter = Import("WebhookReporter")
 	local JoinStoryModule = Import("JoinStory")
@@ -213,7 +214,8 @@ return function(Import)
 	end
 	ResponsiveUI:MountMobileLauncher(parent, Config)
 
-	local TabGroup = Window:TabGroup()
+	local Schema = UiSchema.new(Registry)
+	local TabGroup = Schema:TrackGroup(Window:TabGroup())
 	local Tabs = {
 		Join = TabGroup:Tab({ Name = "Join", Image = "rbxassetid://10734950309" }),
 		AutoPlay = TabGroup:Tab({ Name = "Auto Play", Image = "rbxassetid://10734950309" }),
@@ -275,6 +277,7 @@ return function(Import)
 		MacLib = MacLib,
 		Tabs = Tabs,
 		Registry = Registry,
+		Schema = Schema,
 		Config = Config,
 		FileSystem = FileStore,
 		Player = LocalPlayer,
@@ -332,8 +335,9 @@ return function(Import)
 		Registry:Apply({})
 	end
 	if profileReady then Config:ActivateProfile() end
-	Registry.OnChanged = function()
+	Registry.OnChanged = function(flag, value)
 		Config:ScheduleAutoSave()
+		if Runtime.HubLive then Runtime.HubLive:Changed(flag, value) end
 	end
 	task.spawn(function()
 		Util.SafeCall("cloud sync", CloudSyncModule.Start, Context)
