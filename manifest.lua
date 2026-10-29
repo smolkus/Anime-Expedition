@@ -1,5 +1,5 @@
 return {
-	Version = "1.31.0",
+	Version = "1.32.0",
 	Entry = "Main",
 	Modules = {
 		Build = "src/Build.lua",
@@ -17,6 +17,7 @@ return {
 		BountyCatalog = "src/Core/BountyCatalog.lua",
 		JoinCoordinator = "src/Core/JoinCoordinator.lua",
 		UiSchema = "src/Core/UiSchema.lua",
+		HubReadouts = "src/Core/HubReadouts.lua",
 		HubLive = "src/Core/HubLive.lua",
 		CloudSync = "src/Core/CloudSync.lua",
 		RewardScanner = "src/Core/RewardScanner.lua",

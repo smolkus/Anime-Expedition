@@ -55,6 +55,7 @@ return function(Import)
 		Alive = true,
 		ShuttingDown = false,
 		Janitor = Janitor.new(),
+		Readouts = {},
 		Window = nil,
 		MacLib = nil,
 		MacGui = nil,
