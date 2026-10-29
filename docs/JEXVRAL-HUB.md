@@ -14,15 +14,12 @@ getgenv().key = "jxk_..."
 loadstring(game:HttpGet("https://jexvral.xyz/game/ap/loader"))()
 ```
 
-- Each Roblox account runs a role (Main until the member picks another on the website). On
-  start the script says hello and applies its account's role; flags the role keeps per device
-  (webhook URLs always) are left alone. Local configs stay on the device.
+- Configs are the same here and on the website: on start the script sends its configs, writes
+  the ones it is missing, deletes the ones deleted on the website and loads the config this
+  account uses. Saves, new configs, deletes and loads in game go to the website and on to the
+  other running clients. Webhook URLs stay on the device.
 - While the script runs, the website lists it on the game's board and draws this script's UI
-  (tabs, sub tabs, sections, controls) from `UiSchema`. Role rollouts apply in game through
-  `ControlRegistry:SetFromRemote`, only for values that differ; the script answers with any
-  value it had to adjust.
-- Changes the player makes in game, or loading a local config, are reported and shown on the
-  website until the member keeps them for the account, adds them to the role or puts them back.
+  (tabs, sub tabs, sections, controls) from `UiSchema`, and can switch it to another config.
 - `HubReadouts` sends leaderstats and FPS every 10 seconds when they change; modules can add
   more with `table.insert(ctx.Runtime.Readouts, function() return {name = "Wave", value = n,
   progress = true} end)`. `ControlRegistry:Action(section, settings, flag)` makes a button the
